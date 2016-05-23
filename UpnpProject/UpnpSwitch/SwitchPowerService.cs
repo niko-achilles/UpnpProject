@@ -41,10 +41,8 @@ namespace UpnpSwitch
         private void OnModified_Status(UPnPStateVariable sender, object NewValue)
         {
             Console.WriteLine("Status Modified Handler");
-
             Console.WriteLine("Sender Name is: " + sender.Name);
             Console.WriteLine("New Value is " + NewValue);
-
         }
 
         //IUPnP Interface Method
@@ -74,19 +72,20 @@ namespace UpnpSwitch
             service.AddMethod("GetTarget");
             service.AddMethod("SetTarget");
             return service;
-
         }
+
         public System.Boolean Evented_Status
         {
             get
             {
-                return ((System.Boolean)_upnpService.GetStateVariable("Status"));
+                return ((System.Boolean)this._upnpService.GetStateVariable("Status"));
             }
             set
             {
-                _upnpService.SetStateVariable("Status", value);
+                this._upnpService.SetStateVariable("Status", value);
             }
         }
+
         public System.Boolean Target
         {
             get
@@ -120,32 +119,32 @@ namespace UpnpSwitch
 
         public void RemoveStateVariable_Status()
         {
-            _upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Status"));
+            this._upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Status"));
         }
         public void RemoveStateVariable_Target()
         {
-            _upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Target"));
+            this._upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Target"));
         }
         public void RemoveAction_GetStatus()
         {
-            _upnpService.RemoveMethod("GetStatus");
+            this._upnpService.RemoveMethod("GetStatus");
         }
         public void RemoveAction_GetTarget()
         {
-            _upnpService.RemoveMethod("GetTarget");
+            this._upnpService.RemoveMethod("GetTarget");
         }
         public void RemoveAction_SetTarget()
         {
-            _upnpService.RemoveMethod("SetTarget");
+            this._upnpService.RemoveMethod("SetTarget");
         }
 
         public System.Net.IPEndPoint GetCaller()
         {
-            return (_upnpService.GetCaller());
+            return (this._upnpService.GetCaller());
         }
         public System.Net.IPEndPoint GetReceiver()
         {
-            return (_upnpService.GetReceiver());
+            return (this._upnpService.GetReceiver());
         }
     }
 }
