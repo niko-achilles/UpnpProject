@@ -1,12 +1,16 @@
-﻿using OpenSource.UPnP;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// **************************************************************************** 
+// <author>Nikolaos Kokkinos</author> 
+// <email>nik.kokkinos@windowslive.com</email> 
+// <date>22.05.2016</date> 
+// <project>UpnpSwitch</project> 
+// <web>http://nikolaoskokkinos.wordpress.com/</web> 
+// ****************************************************************************
 
 namespace UpnpSwitch
 {
+    using OpenSource.UPnP;
+    using System;
+
     public class SwitchPowerService : IUPnPService
     {
         

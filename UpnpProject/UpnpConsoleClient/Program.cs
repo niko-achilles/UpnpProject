@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UpnpSwitch;
+﻿// **************************************************************************** 
+// <author>Nikolaos Kokkinos</author> 
+// <email>nik.kokkinos@windowslive.com</email> 
+// <date>22.05.2016</date> 
+// <project>UpnpConsoleClient</project> 
+// <web>http://nikolaoskokkinos.wordpress.com/</web> 
+// ****************************************************************************
 
 namespace UpnpConsoleClient
 {
+    using UpnpSwitch;
+
     class Program
     {
         static void Main(string[] args)
