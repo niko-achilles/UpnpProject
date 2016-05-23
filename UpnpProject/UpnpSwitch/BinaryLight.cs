@@ -10,7 +10,7 @@ namespace UpnpSwitch
 {
     using OpenSource.UPnP;
 
-    public class SwitchPower
+    public class BinaryLight
     {
         private  const string FriendlyName = "Network Upnp Light Bulb";
         private  const string Manufacturer = "Niko Kokkinos Factory";
@@ -26,7 +26,7 @@ namespace UpnpSwitch
 
         private UPnPDevice device;
 
-        public SwitchPower()
+        public BinaryLight()
         {
             device = UPnPDevice.CreateRootDevice(1800, 1.0, "\\");
 

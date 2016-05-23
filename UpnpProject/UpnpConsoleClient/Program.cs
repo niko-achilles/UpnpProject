@@ -16,7 +16,7 @@ namespace UpnpConsoleClient
         {
             System.Console.WriteLine("UPnP .NET Framework Console Client");
 
-            SwitchPower device = new SwitchPower();
+            BinaryLight device = new BinaryLight();
             device.Start();
             System.Console.WriteLine("Press return to stop device.");
             System.Console.ReadLine();
