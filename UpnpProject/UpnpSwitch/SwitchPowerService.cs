@@ -14,28 +14,37 @@ namespace UpnpSwitch
     public class SwitchPowerService : IUPnPService
     {
         
-
         private UPnPService _upnpService;
-        public UPnPService UPnPService  { get { return this._upnpService; } private set { this._upnpService = value; } }
-
+        
         private const string URN = "urn:schemas-upnp-org:service:SwitchPower:1";
+        private const string ServiceID = "urn:upnp-org:serviceId:SwitchPower.0001";
 
         public SwitchPowerService()
         {
-            this.UPnPService = this.GetUPnPService();
-            this.UPnPService.GetStateVariableObject("Status").OnModified += new UPnPStateVariable.ModifiedHandler(OnModifiedSink_Status);
-            this.UPnPService.GetStateVariableObject("Target").OnModified += new UPnPStateVariable.ModifiedHandler(OnModifiedSink_Target);
+            this._upnpService = this.GetUPnPService();
+
+            this._upnpService.GetStateVariableObject("Status")
+                                .OnModified += new UPnPStateVariable.ModifiedHandler(OnModified_Status);
+
+            this._upnpService.GetStateVariableObject("Target")
+                                .OnModified += new UPnPStateVariable.ModifiedHandler(OnModified_Target);
 
         }
 
-        private void OnModifiedSink_Target(UPnPStateVariable sender, object NewValue)
+        private void OnModified_Target(UPnPStateVariable sender, object NewValue)
         {
-            Console.WriteLine("Modified Target");
+            Console.WriteLine("Target Modified Handler");
+            Console.WriteLine("Sender Name is: " + sender.Name);
+            Console.WriteLine("New Value is " + NewValue);
         }
 
-        private void OnModifiedSink_Status(UPnPStateVariable sender, object NewValue)
+        private void OnModified_Status(UPnPStateVariable sender, object NewValue)
         {
-            Console.WriteLine("Modified Status");
+            Console.WriteLine("Status Modified Handler");
+
+            Console.WriteLine("Sender Name is: " + sender.Name);
+            Console.WriteLine("New Value is " + NewValue);
+
         }
 
         //IUPnP Interface Method
@@ -51,7 +60,7 @@ namespace UpnpSwitch
             RetVal[1].AddAssociation("SetTarget", "newTargetValue");
 
             UPnPService service = new UPnPService(version: 1,
-                                            serviceID: "urn:upnp-org:serviceId:SwitchPower.0001",
+                                            serviceID: ServiceID,
                                             serviceType: URN,
                                             IsStandardService: true,
                                             Instance: this);
@@ -67,36 +76,26 @@ namespace UpnpSwitch
             return service;
 
         }
-
-        public void SetStateVariable(string VarName, object VarValue)
-        {
-            UPnPService.SetStateVariable(VarName, VarValue);
-        }
-        public object GetStateVariable(string VarName)
-        {
-            return (UPnPService.GetStateVariable(VarName));
-        }
-
         public System.Boolean Evented_Status
         {
             get
             {
-                return ((System.Boolean) this.UPnPService.GetStateVariable("Status"));
+                return ((System.Boolean)_upnpService.GetStateVariable("Status"));
             }
             set
             {
-                this.UPnPService.SetStateVariable("Status", value);
+                _upnpService.SetStateVariable("Status", value);
             }
         }
         public System.Boolean Target
         {
             get
             {
-                return ((System.Boolean)this.UPnPService.GetStateVariable("Target"));
+                return ((System.Boolean)this._upnpService.GetStateVariable("Target"));
             }
             set
             {
-                this.UPnPService.SetStateVariable("Target", value);
+                this._upnpService.SetStateVariable("Target", value);
             }
         }
 
@@ -121,32 +120,32 @@ namespace UpnpSwitch
 
         public void RemoveStateVariable_Status()
         {
-            UPnPService.RemoveStateVariable(UPnPService.GetStateVariableObject("Status"));
+            _upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Status"));
         }
         public void RemoveStateVariable_Target()
         {
-            UPnPService.RemoveStateVariable(UPnPService.GetStateVariableObject("Target"));
+            _upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Target"));
         }
         public void RemoveAction_GetStatus()
         {
-            UPnPService.RemoveMethod("GetStatus");
+            _upnpService.RemoveMethod("GetStatus");
         }
         public void RemoveAction_GetTarget()
         {
-            UPnPService.RemoveMethod("GetTarget");
+            _upnpService.RemoveMethod("GetTarget");
         }
         public void RemoveAction_SetTarget()
         {
-            UPnPService.RemoveMethod("SetTarget");
+            _upnpService.RemoveMethod("SetTarget");
         }
 
         public System.Net.IPEndPoint GetCaller()
         {
-            return (UPnPService.GetCaller());
+            return (_upnpService.GetCaller());
         }
         public System.Net.IPEndPoint GetReceiver()
         {
-            return (UPnPService.GetReceiver());
+            return (_upnpService.GetReceiver());
         }
     }
 }
