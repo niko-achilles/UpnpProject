@@ -30,12 +30,12 @@ namespace UpnpSwitch
 
         private void OnModifiedSink_Target(UPnPStateVariable sender, object NewValue)
         {
-           //
+            Console.WriteLine("Modified Target");
         }
 
         private void OnModifiedSink_Status(UPnPStateVariable sender, object NewValue)
         {
-            //
+            Console.WriteLine("Modified Status");
         }
 
         //IUPnP Interface Method
@@ -147,52 +147,6 @@ namespace UpnpSwitch
         public System.Net.IPEndPoint GetReceiver()
         {
             return (UPnPService.GetReceiver());
-        }
-
-
-        public UPnPModeratedStateVariable.IAccumulator Accumulator_Status
-        {
-            get
-            {
-                return (((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Status")).Accumulator);
-            }
-            set
-            {
-                ((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Status")).Accumulator = value;
-            }
-        }
-        public double ModerationDuration_Status
-        {
-            get
-            {
-                return (((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Status")).ModerationPeriod);
-            }
-            set
-            {
-                ((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Status")).ModerationPeriod = value;
-            }
-        }
-        public UPnPModeratedStateVariable.IAccumulator Accumulator_Target
-        {
-            get
-            {
-                return (((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Target")).Accumulator);
-            }
-            set
-            {
-                ((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Target")).Accumulator = value;
-            }
-        }
-        public double ModerationDuration_Target
-        {
-            get
-            {
-                return (((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Target")).ModerationPeriod);
-            }
-            set
-            {
-                ((UPnPModeratedStateVariable)UPnPService.GetStateVariableObject("Target")).ModerationPeriod = value;
-            }
         }
     }
 }
