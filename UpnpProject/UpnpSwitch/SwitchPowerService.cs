@@ -116,23 +116,28 @@ namespace UpnpSwitch
             Console.WriteLine("Set Target, " + this.Target);
         }
 
-
         public void RemoveStateVariable_Status()
         {
-            this._upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Status"));
+            var stateVariable = this._upnpService.GetStateVariableObject("Status");
+            this._upnpService.RemoveStateVariable(stateVariable);
         }
+
         public void RemoveStateVariable_Target()
         {
-            this._upnpService.RemoveStateVariable(_upnpService.GetStateVariableObject("Target"));
+            var stateVariable = this._upnpService.GetStateVariableObject("Target");
+            this._upnpService.RemoveStateVariable(stateVariable);
         }
+
         public void RemoveAction_GetStatus()
         {
             this._upnpService.RemoveMethod("GetStatus");
         }
+
         public void RemoveAction_GetTarget()
         {
             this._upnpService.RemoveMethod("GetTarget");
         }
+
         public void RemoveAction_SetTarget()
         {
             this._upnpService.RemoveMethod("SetTarget");
@@ -142,6 +147,7 @@ namespace UpnpSwitch
         {
             return (this._upnpService.GetCaller());
         }
+
         public System.Net.IPEndPoint GetReceiver()
         {
             return (this._upnpService.GetReceiver());
