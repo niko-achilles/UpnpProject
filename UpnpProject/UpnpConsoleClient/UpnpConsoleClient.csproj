@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UpnpSwitch\UpnpDevice.csproj">
+    <ProjectReference Include="..\UpnpDevice\UpnpDevice.csproj">
       <Project>{109c5046-970b-4f59-a6ea-cc67d85863b5}</Project>
       <Name>UpnpDevice</Name>
     </ProjectReference>
