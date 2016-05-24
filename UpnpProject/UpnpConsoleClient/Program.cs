@@ -8,18 +8,22 @@
 
 namespace UpnpConsoleClient
 {
-    using UpnpSwitch;
+    using System;
+    using UpnpDevice;
 
     class Program
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("UPnP .NET Framework Console Client");
+            Console.WriteLine("UPnP .NET Framework Console Client. Uses the Binary Light Device according to the upnp spec.");
 
             BinaryLight device = new BinaryLight();
+
             device.Start();
-            System.Console.WriteLine("Press return to stop device.");
-            System.Console.ReadLine();
+
+            Console.WriteLine("Press return to stop device.");
+            Console.ReadLine();
+
             device.Stop();
         }
     }

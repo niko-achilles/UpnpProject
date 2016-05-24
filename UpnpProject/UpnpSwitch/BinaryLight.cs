@@ -6,7 +6,7 @@
 // <web>http://nikolaoskokkinos.wordpress.com/</web> 
 // ****************************************************************************
 
-namespace UpnpSwitch
+namespace UpnpDevice
 {
     using OpenSource.UPnP;
 
@@ -51,7 +51,6 @@ namespace UpnpSwitch
             device.AddService(service);
 
         }
-
 
         public void Start()
         {

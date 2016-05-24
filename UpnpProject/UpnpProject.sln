@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpnpConsoleClient", "UpnpConsoleClient\UpnpConsoleClient.csproj", "{BF2E17FA-16C6-4AE1-AD76-8E59E95120C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpnpSwitch", "UpnpSwitch\UpnpSwitch.csproj", "{109C5046-970B-4F59-A6EA-CC67D85863B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpnpDevice", "UpnpSwitch\UpnpDevice.csproj", "{109C5046-970B-4F59-A6EA-CC67D85863B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

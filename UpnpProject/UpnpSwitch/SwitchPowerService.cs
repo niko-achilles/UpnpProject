@@ -6,10 +6,11 @@
 // <web>http://nikolaoskokkinos.wordpress.com/</web> 
 // ****************************************************************************
 
-namespace UpnpSwitch
+namespace UpnpDevice
 {
     using OpenSource.UPnP;
     using System;
+    using System.Net;
 
     public class SwitchPowerService : IUPnPService
     {
@@ -28,7 +29,6 @@ namespace UpnpSwitch
 
             this._upnpService.GetStateVariableObject("Target")
                                 .OnModified += new UPnPStateVariable.ModifiedHandler(OnModified_Target);
-
         }
 
         private void OnModified_Target(UPnPStateVariable sender, object NewValue)
@@ -74,11 +74,11 @@ namespace UpnpSwitch
             return service;
         }
 
-        public System.Boolean Evented_Status
+        public Boolean Status
         {
             get
             {
-                return ((System.Boolean)this._upnpService.GetStateVariable("Status"));
+                return ((Boolean)this._upnpService.GetStateVariable("Status"));
             }
             set
             {
@@ -86,11 +86,11 @@ namespace UpnpSwitch
             }
         }
 
-        public System.Boolean Target
+        public Boolean Target
         {
             get
             {
-                return ((System.Boolean)this._upnpService.GetStateVariable("Target"));
+                return ((Boolean)this._upnpService.GetStateVariable("Target"));
             }
             set
             {
@@ -98,19 +98,19 @@ namespace UpnpSwitch
             }
         }
 
-        public void GetStatus(out System.Boolean ResultStatus)
+        public void GetStatus(Boolean ResultStatus)
         {
-            ResultStatus = this.Evented_Status;
-            Console.WriteLine("GetStatus " + this.Evented_Status );
+            ResultStatus = this.Status;
+            Console.WriteLine("GetStatus " + this.Status );
         }
 
-        public void GetTarget(out System.Boolean newTargetValue)
+        public void GetTarget(out Boolean newTargetValue)
         {
             newTargetValue = this.Target;
             Console.WriteLine("Get Target, " + this.Target);
         }
 
-        public void SetTarget(System.Boolean newTargetValue)
+        public void SetTarget(Boolean newTargetValue)
         {
             this.Target = newTargetValue;
             Console.WriteLine("Set Target, " + this.Target);
@@ -143,12 +143,12 @@ namespace UpnpSwitch
             this._upnpService.RemoveMethod("SetTarget");
         }
 
-        public System.Net.IPEndPoint GetCaller()
+        public IPEndPoint GetCaller()
         {
             return (this._upnpService.GetCaller());
         }
 
-        public System.Net.IPEndPoint GetReceiver()
+        public IPEndPoint GetReceiver()
         {
             return (this._upnpService.GetReceiver());
         }

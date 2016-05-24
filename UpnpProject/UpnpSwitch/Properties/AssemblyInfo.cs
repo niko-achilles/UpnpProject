@@ -4,11 +4,12 @@ using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
+
 // associated with an assembly.
-[assembly: AssemblyTitle("UpnpSwitch")]
+[assembly: AssemblyTitle("UpnpDevice")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Nikolaos Kokkinos")]
 [assembly: AssemblyProduct("UpnpSwitch")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

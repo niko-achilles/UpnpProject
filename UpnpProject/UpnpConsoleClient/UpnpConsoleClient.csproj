@@ -50,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UpnpSwitch\UpnpSwitch.csproj">
+    <ProjectReference Include="..\UpnpSwitch\UpnpDevice.csproj">
       <Project>{109c5046-970b-4f59-a6ea-cc67d85863b5}</Project>
-      <Name>UpnpSwitch</Name>
+      <Name>UpnpDevice</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
